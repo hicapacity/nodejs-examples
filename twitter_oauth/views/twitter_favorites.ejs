@@ -1,0 +1,10 @@
+<h1>Your Last 20 Favorites</h1>
+
+<div>
+<ul>
+<% for (var i = 0; i < favorites.length; i++ ) { %> 
+    <% var favorite = favorites[i]; %>
+    <li><%= favorite['text'] %></li>
+<% } %>
+</ul>
+</div>
