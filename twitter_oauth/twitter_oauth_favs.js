@@ -23,8 +23,9 @@ app.configure('production', function() {
 });
 
 // Private vars
-var _consumer_key = "9A2CZ9QUfMnFIpxXxb7q8A";
-var _consumer_sec = "kdozyZmiGwu0ooVSTl2a9LA3nhom4D1eHfxeuF5DqS4";
+// TODO: Put your Twitter creds here
+var _consumer_key = "";
+var _consumer_sec = "";
 
 // Oauth vars
 var request_token_url = "https://twitter.com/oauth/request_token";
