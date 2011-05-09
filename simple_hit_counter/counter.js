@@ -1,3 +1,8 @@
+// Modified version of http://hublog.hubmed.org/archives/001927.html
+// Added express, stats, favicon.ico route 
+//
+// TODO: need to add binary data for gif
+
 var http = require("http"), 
   crypto = require("crypto"), 
       db = require("redis").createClient(),
