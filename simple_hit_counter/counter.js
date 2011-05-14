@@ -3,11 +3,10 @@
 //
 // TODO: need to add binary data for gif
 
-var http = require("http"), 
-  crypto = require("crypto"), 
-      db = require("redis").createClient(),
- express = require('express'),
-    port = 8000;
+var crypto = require("crypto"), 
+        db = require("redis").createClient(),
+   express = require('express'),
+      port = 8000;
 
 
 // Create server
