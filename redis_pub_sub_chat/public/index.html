@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<!-- Change this here -->
+	<script src="/socket.io/socket.io.js"></script> 
+	<script type="text/javascript">
+        $(document).ready(function() {
+            var socket = new io.Socket('127.0.0.1', {port: 8000, rememberTransport: false}); 
+
+            var chat = $('#chat');
+
+            socket.on('connect', function(){
+                alert("connected!");
+            });
+            socket.on('message', function(message) {
+                chat.prepend(message + '<br />');
+            });
+            socket.on('disconnect', function() {
+                alert("socket closed");
+            });
+            socket.connect();
+        });
+	</script>
+</head>
+<body>
+<div id="chat"></div>
+</body>
+</html>
