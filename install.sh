@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Check for NPM
 type -P npm &>/dev/null || { echo ">>> NPM not installed. Please install using: curl http://npmjs.org/install.sh | sh" >&2; exit 1; }
