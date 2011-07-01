@@ -15,7 +15,7 @@ if (!USERNAME || !PASSWORD)
 var twit = new Twitter({
 	user: USERNAME, 
 	password:  PASSWORD,
-	follow: [31953],
+	follow: [9493322],
 	locations: [-157.86, 21.31, -156.86, 22.31] // Track Hawaii
 });
 
@@ -35,5 +35,9 @@ var socket = io.listen(server);
 socket.on('connection', function(client) {}); 
 
 twit.addListener('tweet', function(tweet) {
-	socket.broadcast(tweet);
+	socket.emit(tweet);
 }).stream();
+
+twit.addListener('error', function(error) {
+  console.log(error.message);
+});
