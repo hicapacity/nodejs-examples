@@ -1,4 +1,5 @@
 var express = require('express'),
+        sys = require("sys"),
 	  OAuth = require('oauth').OAuth,
 	     qs = require('querystring'),
        port = 8000;
@@ -26,6 +27,9 @@ app.configure('production', function() {
 // TODO: Put your Twitter creds here
 var _consumer_key = "";
 var _consumer_sec = "";
+
+if (!_consumer_key||!_consumer_sec)
+	return sys.puts("Required to insert consumer key/secret into app.");
 
 // Oauth vars
 var request_token_url = "https://twitter.com/oauth/request_token";
