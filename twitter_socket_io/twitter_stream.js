@@ -2,7 +2,7 @@ var sys = require("sys"),
    http = require("http"),
     url = require("url"), 
  static = require("node-static"),
-     io = require("socket.io"),
+    sio = require("socket.io"),
 Twitter = require("twitter-node").TwitterNode,
    port = 8000;
 
@@ -15,7 +15,7 @@ if (!USERNAME || !PASSWORD)
 var twit = new Twitter({
 	user: USERNAME, 
 	password:  PASSWORD,
-	follow: [9493322],
+	follow: [],
 	locations: [-157.86, 21.31, -156.86, 22.31] // Track Hawaii
 });
 
@@ -30,14 +30,14 @@ var server = http.createServer(function (request, response) {
 server.listen(port);
 
 // socket.io 
-var socket = io.listen(server); 
+var io = sio.listen(server); 
 
-socket.on('connection', function(client) {}); 
+io.sockets.on('connection', function(client) {}); 
 
 twit.addListener('tweet', function(tweet) {
-	socket.emit(tweet);
+	io.sockets.emit('message', tweet);
 }).stream();
 
 twit.addListener('error', function(error) {
-  console.log(error.message);
+    console.log(error.message);
 });
