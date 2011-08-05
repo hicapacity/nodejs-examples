@@ -1,0 +1,64 @@
+</html>
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Test JIT</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/Treemap.css" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jit-yc.js"></script>
+  <script type="text/javascript" src="/js/example1.js"></script>
+  <script src="/socket.io/socket.io.js"></script> 
+  <script type="text/javascript">
+
+    var socket = io.connect('http://127.0.0.1:8000');
+
+    var available_maps = [
+        new $jit.Layouts.TM.Squarified,
+        new $jit.Layouts.TM.Strip,
+        new $jit.Layouts.TM.SliceAndDice
+    ];
+
+    socket.on('connect', function(){
+        alert("connected!");
+        console.log("Connected");
+    });
+
+    socket.on('message', function(evt) {
+        console.log("Received");
+        var util = $jit.util;
+        var map = available_maps[Math.floor(Math.random() * available_maps.length)];
+
+        util.extend(tm, map);
+        tm.refresh();
+    });
+
+    socket.on('disconnect', function() {
+        alert("socket closed");
+        console.log("Closed");
+    });
+  </script>
+
+</head>
+
+<body onload="init();">
+  <div id="container">
+    <header></header>
+    <div id="main" role="main">
+      <%- body %>  
+    </div>
+    <footer></footer>
+  </div> 
+</body>
+</html>
