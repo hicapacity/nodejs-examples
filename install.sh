@@ -14,6 +14,7 @@ npm install cron@0.1.2
 npm install htmlparser@1.7.3
 npm install twitter-node@0.0.2
 npm install ejs@0.4.3
+npm install jade@0.14.1
 
 # Create symlink in all directories
 DIRS=$(find `pwd` -d 1 -type d \( -not -iname ".*" -and -not -iname "node_modules" \))
