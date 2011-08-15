@@ -33,6 +33,7 @@ app.get('/favicon.ico', function(req, res) {
     res.end();
 });
 
+// Routes example
 app.get('/user/:id', function(req, res) {
 	var people = [
 	    { name: 'Dave', location: 'Atlanta' },
@@ -42,9 +43,15 @@ app.get('/user/:id', function(req, res) {
 	res.send(JSON.stringify(people));
 });
 
+// Playing with invoking callbacks on route
 app.get('/status', check_status, function(req, res) {
 });
 
+function check_status(req, res) {
+	res.send('status has been checked at:' + new Date());
+};
+
+// Playing with Jade
 app.get('/register', function(req, res) {
 	res.render('register_form');
 });
@@ -53,11 +60,15 @@ app.post('/register', function(req,res) {
 	res.render('user_registered', {email: req.body.email});
 });
 
-function check_status(req, res) {
-	res.send('status has been checked at:' + new Date());
-};
+// Param pre-conditions
+app.get('/precond/:user_id', function(req, res) {
+	res.send("user validated in precondition: " + req.user);
+});
 
-
+app.param('user_id', function(req, res, next, id){
+	req.user = 'austen.ito@omg.net';
+	next();
+});	
 
 app.listen(port);
 console.log("Listening on <insert your favorite ip>:" + port);
