@@ -7,6 +7,18 @@
 Run this rudimentary install if you want to try out the examples.  It installs
 the dependencies, then symlinks node_modules in each directory.
 
+## Node.js Introduction Code
+
+Simple demonstration of node features.
+
+demo1: Hello world and interval examples showing setTimeout and setInterval
+
+demo2: Socket chat server
+
+demo3: Supervisor, fs, and express
+
+demo4: Express, Twitter streaming API, and Socket IO
+
 ## Domain Search
 
 Allows you to see if a domain is available.
