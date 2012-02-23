@@ -1,0 +1,15 @@
+{
+  "author": "",
+  "name": "boilerplate",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hicapacity/nodejs-examples.git"
+  },
+  "engines": {
+    "node": "~0.6.11"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
